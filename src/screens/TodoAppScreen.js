@@ -7,7 +7,7 @@ import InlineInputAndButton from '../components/InlineInputAndButton';
 
 const TodoAppScreen = () => {
 
-    const initialTodo = [{ value: "Edit text here" }]
+    const initialTodo = [{ value: "Edit text here" }];
     const [todos, setTodos] = useState(initialTodo);
     const [text, setText] = useState("");
 
@@ -17,13 +17,9 @@ const TodoAppScreen = () => {
 
     const handleAddButton = (text) => {
 
-        setTodos([
-            ...todos,
-            {
-                value: text,
-            }
-        ])
-        setText("")
+        setTodos([...todos, { value: text }]);
+        setText("");
+
     }
 
     const handleClickEdit = ({ index: i, text }) => {
@@ -32,11 +28,12 @@ const TodoAppScreen = () => {
 
             if (index === i) {
                 todo.value = text;
-                return todo
+                return todo;
             }
 
-            return todo
-        }))
+            return todo;
+        }));
+        
     }
 
     const handleDeleteTodo = (i) => {
@@ -44,9 +41,10 @@ const TodoAppScreen = () => {
         setTodos(prevTodo => {
 
             prevTodo.splice(i, 1);
-            const newTodo = [...prevTodo]
+            const newTodo = [...prevTodo];
             return newTodo;
-        })
+        });
+
     }
 
 

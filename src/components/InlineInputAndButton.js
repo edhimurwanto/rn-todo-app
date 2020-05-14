@@ -4,7 +4,8 @@ import { TextInput, Button } from 'react-native-paper';
 
 const InlineInputAndButton = (props) => {
 
-    const { text, handleChangeText, handleAddButton, name, placeholder, mode } = props
+    const { text, handleChangeText, handleAddButton, name, placeholder, mode } = props;
+    
     return (
         <View style={styles.container}>
             <TextInput

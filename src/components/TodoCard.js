@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Divider, TextInput } from 'react-native-paper';
 import VectorIcon from 'react-native-vector-icons/Feather';
-const screenWidth = Dimensions.get('screen').width
 
 const TodoCard = (props) => {
 
@@ -18,20 +17,20 @@ const TodoCard = (props) => {
     }
 
     const handleClick = () => {
+        
         setBtnDisabled(false)
+    
     }
 
     const EditIcon = () => <VectorIcon
         name='edit'
         size={24}
-        style={{ marginRight: 24 }}
         onPress={handleClick}
     />
 
     const SaveIcon = () => <VectorIcon
         name='check-square'
         size={24}
-        style={{ marginRight: 24 }}
         onPress={handleClickSave}
     />
 
@@ -40,19 +39,18 @@ const TodoCard = (props) => {
             <View style={styles.container}>
                 <TextInput
                     selectionColor='purple'
-                    style={{ backgroundColor: '#fff', width: screenWidth - 120, }}
+                    style={styles.input}
                     value={text}
                     disabled={btnDisabled}
                     onChangeText={(text) => setTodo(text)}
                 />
-                <View style={{ flexDirection: 'row' }}>
+                <View style={styles.buttonContainer}>
                     {
                         btnDisabled ? <EditIcon /> : <SaveIcon />
                     }
                     <VectorIcon
                         name='trash'
                         size={24}
-                        style={{ marginRight: 8 }}
                         onPress={() => handleDeleteTodo(index)}
                     />
                 </View>
@@ -70,13 +68,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    title: {
-        fontSize: 24,
-        color: 'purple'
+    input: {
+        flex: 3,
+        backgroundColor: '#fff',
+        color: 'purple',
+        fontSize: 18,
+        marginRight: 16
     },
-    subtitle: {
-        fontSize: 12,
-        color: '#aaa'
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
     divider: {
         borderBottomColor: '#aaa',
